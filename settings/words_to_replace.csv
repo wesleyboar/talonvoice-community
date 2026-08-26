@@ -9,3 +9,33 @@ September,september
 October,october
 November,november
 December,december
+git status,get status
+git status,gets status
+git commit,get commit
+git commit,gets commit
+git push,get push
+git push,gets push
+git pull,get pull
+git pull,gets pull
+git add,get add
+git add,gets add
+git checkout,get checkout
+git checkout,gets checkout
+git branch,get branch
+git branch,gets branch
+git log,get log
+git log,gets log
+git diff,get diff
+git diff,gets diff
+git merge,get merge
+git merge,gets merge
+git rebase,get rebase
+git rebase,gets rebase
+git stash,get stash
+git stash,gets stash
+git fetch,get fetch
+git fetch,gets fetch
+git clone,get clone
+git clone,gets clone
+git reset,get reset
+git reset,gets reset
