@@ -407,6 +407,7 @@ class DictationFormat:
         self.reset_context()
         self.force_no_space = False
         self.force_capitalization = None  # Can also be "cap" or "no cap".
+        self.in_backtick = False
 
     def reset_context(self):
         self.before = ""
@@ -423,11 +424,26 @@ class DictationFormat:
         self.before = text or self.before
 
     def format(self, text, auto_cap=True):
-        if not self.force_no_space and actions.user.needs_space_between(
-            self.before, text
-        ):
-            text = " " + text
-        self.force_no_space = False
+        if text == "`":
+            # Backtick is a symmetric pair delimiter (unlike quotes/brackets, it
+            # can't tell open from close by its own character), so track parity
+            # explicitly: space before the opening one, hug the enclosed text,
+            # no space before the closing one, then resume normal spacing.
+            if self.in_backtick:
+                self.in_backtick = False
+            else:
+                if not self.force_no_space and actions.user.needs_space_between(
+                    self.before, text
+                ):
+                    text = " " + text
+                self.in_backtick = True
+            self.force_no_space = self.in_backtick
+        else:
+            if not self.force_no_space and actions.user.needs_space_between(
+                self.before, text
+            ):
+                text = " " + text
+            self.force_no_space = False
         if auto_cap:
             text, self.state = auto_capitalize(text, self.state)
         if self.force_capitalization == "cap":
