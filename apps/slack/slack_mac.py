@@ -52,6 +52,9 @@ class UserActions:
     def slack_show_channel_info():
         actions.key("cmd-shift-i")
 
+    def slack_open_home():
+        actions.key("cmd-1")
+
     def slack_open_direct_messages():
         actions.key("cmd-shift-k")
 

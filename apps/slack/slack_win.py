@@ -51,6 +51,9 @@ class UserActions:
     def slack_show_channel_info():
         actions.key("ctrl-shift-i")
 
+    def slack_open_home():
+        actions.key("ctrl-1")
+
     def slack_open_direct_messages():
         actions.key("ctrl-shift-k")
 

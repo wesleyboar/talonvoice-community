@@ -38,6 +38,9 @@ class Actions:
     def slack_show_channel_info():
         """Shows the current channel's information"""
 
+    def slack_open_home():
+        """Opens the Home view in Slack"""
+
     def slack_section_next():
         """Selects the next Slack section"""
         actions.key("f6")
